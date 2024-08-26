@@ -41,7 +41,7 @@ class Queue
         {
             auto it = _queue.begin();
             int queue_size = size()-1;
-            cout << "Current Queue size : " << size() << endl;
+            
             while(queue_size--)
             {
                 if(it != _queue.end())
@@ -82,6 +82,23 @@ template<typename T>
         cout << endl;
     }
 
+class RandomClass
+{
+    string _data;
+
+    public:
+    
+    RandomClass() = default;
+    RandomClass(string data):_data(data){}
+
+    friend ostream& operator<<(ostream &os,RandomClass& rc)
+    {
+        os << rc._data;
+        return os;
+    }
+
+};
+
 int main()
 {
     Queue<int> q1;
@@ -99,6 +116,18 @@ int main()
     show(q1);
     q1.pop();
     show(q1);
+
+    RandomClass rc1("Some");
+    RandomClass rc2("Random");
+    RandomClass rc3("Class");
+
+    Queue<RandomClass> q2;
+    q2.push(rc1);
+    q2.push(rc2);
+    q2.push(rc3);
+    show(q2);
+    q2.pop();
+    show(q2);
 
     
     return 0;
